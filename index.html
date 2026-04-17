@@ -389,4 +389,359 @@
         };
     </script>
 </body>
+</html>        }
+
+        .gold-text {
+            background: linear-gradient(45deg, var(--gold), var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border { border: 1px solid var(--gold); }
+        .gold-bg { background: linear-gradient(45deg, var(--gold), #b38728); }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(191, 149, 63, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(191, 149, 63, 0.15);
+        }
+
+        section { position: relative; z-index: 10; }
+
+        .product-img {
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+        
+        .card-container:hover .product-img {
+            transform: scale(1.1);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(15px);
+        }
+
+        .modal-content {
+            max-width: 900px;
+            margin: 5vh auto;
+            background: #111;
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+
+        .social-float {
+            position: fixed;
+            right: 20px;
+            bottom: 100px;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="canvas-container"></div>
+
+    <!-- روابط التواصل السريع -->
+    <div class="social-float">
+        <a href="https://wa.me/971585470450" class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white text-xl shadow-lg hover:scale-110 transition"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/kemit_ae" class="w-12 h-12 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 rounded-full flex items-center justify-center text-white text-xl shadow-lg hover:scale-110 transition"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@kemit_ae" class="w-12 h-12 bg-black border border-gray-700 rounded-full flex items-center justify-center text-white text-xl shadow-lg hover:scale-110 transition"><i class="fab fa-tiktok"></i></a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 px-6 py-4 bg-black/40 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 gold-border rounded-full flex items-center justify-center bg-black">
+                    <span class="gold-text font-bold text-xl">K</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-bold gold-text tracking-widest leading-none">KEMIT</span>
+                    <span class="text-[10px] text-gray-400 tracking-[3px]">UAE STORE</span>
+                </div>
+            </div>
+            <div class="hidden md:flex gap-10 text-xs font-bold tracking-widest">
+                <a href="#home" class="hover:text-[#bf953f] transition uppercase">الرئيسية</a>
+                <a href="#catalog" class="hover:text-[#bf953f] transition uppercase">الكتالوج الملكي</a>
+                <a href="#reviews" class="hover:text-[#bf953f] transition uppercase">آراء العملاء</a>
+                <a href="#about" class="hover:text-[#bf953f] transition uppercase">قصتنا</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:+971585470450" class="hidden sm:block text-sm font-bold tracking-tighter">+971 58 547 0450</a>
+                <a href="https://wa.me/971585470450" class="gold-bg text-black px-6 py-2 rounded-full text-xs font-bold hover:shadow-[0_0_15px_rgba(191,149,63,0.5)] transition">إحجز الآن</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="h-screen flex flex-col items-center justify-center text-center px-4">
+        <div class="animate-pulse mb-4 text-[#bf953f] tracking-[5px] text-sm uppercase font-bold">الرفاهية المصرية في الإمارات</div>
+        <h1 class="text-6xl md:text-9xl font-bold mb-6">KEMIT</h1>
+        <p class="text-xl md:text-3xl font-light text-gray-300 max-w-3xl mb-12">
+            حيث تلتقي عراقة <span class="gold-text font-bold">مصر</span> بحداثة <span class="gold-text font-bold">الإمارات</span>.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6">
+            <a href="#catalog" class="gold-bg text-black px-12 py-4 rounded-full font-bold hover:scale-105 transition shadow-[0_0_20px_rgba(191,149,63,0.3)]">اكتشف المجموعة</a>
+            <a href="https://www.instagram.com/kemit_ae" target="_blank" class="border border-white/20 hover:border-[#bf953f] text-white px-12 py-4 rounded-full font-bold transition">تابعنا على Instagram</a>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section id="catalog" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">الكتالوج الملكي</h2>
+                    <p class="text-[#bf953f] font-bold tracking-widest uppercase text-sm">أفضل المختارات المصنعة في مصر</p>
+                </div>
+            </div>
+
+            <!-- شبكة المنتجات -->
+            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- سيتم ملء المنتجات برمجياً -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-24 px-6 bg-black/40">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 gold-text">ماذا يقول عملاؤنا؟</h2>
+                <p class="text-gray-500">ثقة عملائنا في الإمارات هي سر نجاحنا</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 glass-card rounded-2xl italic text-gray-300">
+                    <div class="flex text-[#bf953f] mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    "جودة الخشب المصري لا يعلى عليها، وتصميم الغرفة كان أجمل مما توقعت في الحقيقة. تعامل راقي جداً."
+                    <p class="mt-6 font-bold text-white not-italic">- عميل من الإمارات</p>
+                </div>
+                <div class="p-8 glass-card rounded-2xl italic text-gray-300">
+                    <div class="flex text-[#bf953f] mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    "الصالون قطعة فنية في مجلسي، والقطن المصري مريح جداً. الشحن لكل الإمارات كان سريع ومنظم."
+                    <p class="mt-6 font-bold text-white not-italic">- عميل من الإمارات</p>
+                </div>
+                <div class="p-8 glass-card rounded-2xl italic text-gray-300">
+                    <div class="flex text-[#bf953f] mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    "أفضل مكان تشتري منه أثاث مصري أصلي في الإمارات. شكراً لفريق كيميت على الاحترافية."
+                    <p class="mt-6 font-bold text-white not-italic">- عميل من الإمارات</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal التفاصيل -->
+    <div id="productModal" class="modal">
+        <div class="modal-content relative flex flex-col md:flex-row">
+            <span onclick="closeModal()" class="absolute top-4 right-6 text-3xl cursor-pointer text-white hover:text-[#bf953f] z-50">&times;</span>
+            <div class="md:w-1/2 h-[400px] md:h-auto overflow-hidden">
+                <img id="modalImg" src="" class="w-full h-full object-cover">
+            </div>
+            <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                <h2 id="modalTitle" class="text-4xl font-bold mb-4 gold-text"></h2>
+                <div class="flex items-center gap-4 mb-6">
+                    <span id="modalPrice" class="text-2xl font-bold text-white"></span>
+                    <span class="px-3 py-1 bg-green-900/30 text-green-500 text-xs rounded-full uppercase font-bold">متوفر في الإمارات</span>
+                </div>
+                <p id="modalDesc" class="text-gray-400 leading-relaxed mb-8"></p>
+                <div class="grid grid-cols-2 gap-4 mb-8 text-xs text-gray-500 uppercase">
+                    <div class="flex items-center gap-2 font-bold"><i class="fas fa-check text-[#bf953f]"></i> خشب زان طبيعي</div>
+                    <div class="flex items-center gap-2 font-bold"><i class="fas fa-check text-[#bf953f]"></i> قماش ملكي</div>
+                    <div class="flex items-center gap-2 font-bold"><i class="fas fa-check text-[#bf953f]"></i> ضمان 10 سنوات</div>
+                    <div class="flex items-center gap-2 font-bold"><i class="fas fa-check text-[#bf953f]"></i> شحن لجميع الإمارات</div>
+                </div>
+                <button id="modalOrderBtn" class="gold-bg text-black py-4 rounded-xl font-bold flex items-center justify-center gap-3 hover:scale-105 transition shadow-lg">
+                    <i class="fab fa-whatsapp text-xl"></i> اطلب الآن عبر الواتساب
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 bg-zinc-950 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8 gold-text uppercase tracking-widest">قصة كيميت</h2>
+            <p class="text-xl text-gray-400 leading-loose">
+                في "كيميت ستور"، نحن لا نبيع مجرد أثاث، بل نصنع قطعاً فنية تروي قصص الفخامة المصرية. كل قطعة يتم تصنيعها في <span class="text-white font-bold">مصر</span> بأيدي أمهر الحرفيين، وتُشحن مباشرة إلى منزلك في <span class="text-white font-bold">الإمارات</span> لضمان أعلى جودة.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-20">
+                <div class="p-8 glass-card rounded-3xl">
+                    <i class="fas fa-shipping-fast text-4xl mb-6 text-[#bf953f]"></i>
+                    <h3 class="text-xl font-bold mb-4">توصيل لكل الإمارات</h3>
+                </div>
+                <div class="p-8 glass-card rounded-3xl">
+                    <i class="fas fa-tools text-4xl mb-6 text-[#bf953f]"></i>
+                    <h3 class="text-xl font-bold mb-4">تصميم حسب الطلب</h3>
+                </div>
+                <div class="p-8 glass-card rounded-3xl">
+                    <i class="fas fa-shield-alt text-4xl mb-6 text-[#bf953f]"></i>
+                    <h3 class="text-xl font-bold mb-4">جودة مصرية أصيلة</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 px-6 bg-black border-t border-white/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-right">
+            <div class="col-span-1 md:col-span-2">
+                <h4 class="text-3xl font-bold gold-text mb-6 uppercase tracking-widest">KEMIT UAE</h4>
+                <p class="text-gray-500 max-w-md mb-8 mx-auto md:mx-0">
+                    الوجهة الأولى للأثاث المصري الفاخر في الإمارات. نحن نجمع بين الأصالة والحداثة.
+                </p>
+                <div class="flex justify-center md:justify-start gap-4">
+                    <a href="https://www.instagram.com/kemit_ae" class="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center hover:gold-bg hover:text-black transition"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/971585470450" class="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center hover:gold-bg hover:text-black transition"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-8 uppercase tracking-widest">تواصل معنا</h4>
+                <ul class="space-y-4 text-gray-500 text-sm">
+                    <li><i class="fas fa-phone-alt ml-2 text-[#bf953f]"></i> +971 58 547 0450</li>
+                    <li><i class="fas fa-envelope ml-2 text-[#bf953f]"></i> hello@kemit.store</li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-20 pt-8 border-t border-white/5 text-center text-gray-600 text-xs tracking-[4px] uppercase">
+            © 2024 KEMIT STORE | Powered by <span class="text-white">ELSMKARYMEDIA</span>
+        </div>
+    </footer>
+
+    <script>
+        // مصفوفة المنتجات
+        const products = [
+            {
+                id: 1,
+                name: "غرفة نوم نفرتيتي مودرن",
+                category: "bedroom",
+                price: "15,800",
+                img: "https://images.unsplash.com/photo-1505691938895-1758d7eaa511?auto=format&fit=crop&q=80&w=800",
+                desc: "غرفة نوم كاملة مصنعة في مصر بأجود أنواع الأخشاب. تتكون من سرير، دولاب، و2 كومودينو بتصميم ملكي معاصر."
+            },
+            {
+                id: 2,
+                name: "صالون رويال جولد",
+                category: "salon",
+                price: "11,200",
+                img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=800",
+                desc: "طقم صالون فخم مطلي بورق الذهب، يجمع بين فخامة القصور المصرية وراحة المجالس الحديثة."
+            },
+            {
+                id: 3,
+                name: "ركنة كيميت الذكية",
+                category: "salon",
+                price: "7,500",
+                img: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=800",
+                desc: "ركنة مودرن مريحة جداً تناسب المنازل العصرية في الإمارات. القماش معالج ضد البقع."
+            }
+        ];
+
+        // عرض المنتجات
+        function displayProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+            products.forEach(p => {
+                grid.innerHTML += `
+                    <div class="card-container glass-card rounded-3xl overflow-hidden cursor-pointer" onclick="openModal(${p.id})">
+                        <div class="product-img" style="background-image: url('${p.img}')"></div>
+                        <div class="p-8">
+                            <h3 class="text-xl font-bold mb-4 uppercase">${p.name}</h3>
+                            <div class="flex justify-between items-center">
+                                <span class="gold-text font-bold text-lg">${p.price} AED</span>
+                                <span class="text-xs text-gray-500 uppercase tracking-widest">التفاصيل <i class="fas fa-arrow-left mr-2"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // Modal Logic
+        function openModal(id) {
+            const p = products.find(x => x.id === id);
+            document.getElementById('modalImg').src = p.img;
+            document.getElementById('modalTitle').innerText = p.name;
+            document.getElementById('modalPrice').innerText = p.price + " AED";
+            document.getElementById('modalDesc').innerText = p.desc;
+            document.getElementById('modalOrderBtn').onclick = () => {
+                window.open(`https://wa.me/971585470450?text=أريد طلب: ${p.name}`, '_blank');
+            };
+            document.getElementById('productModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Three.js Background
+        let scene, camera, renderer, crystal;
+
+        function init3D() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+            const light = new THREE.PointLight(0xbf953f, 2.5);
+            light.position.set(5, 5, 5);
+            scene.add(light);
+            scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+
+            const geometry = new THREE.TorusKnotGeometry(1.5, 0.4, 120, 20);
+            const material = new THREE.MeshStandardMaterial({ color: 0xbf953f, metalness: 1, roughness: 0.1, wireframe: true });
+            crystal = new THREE.Mesh(geometry, material);
+            scene.add(crystal);
+
+            animate();
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            crystal.rotation.y += 0.002;
+            crystal.rotation.x += 0.001;
+            renderer.render(scene, camera);
+        }
+
+        window.onload = () => {
+            init3D();
+            displayProducts();
+        };
+
+        window.onresize = () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        };
+    </script>
+</body>
 </html>
